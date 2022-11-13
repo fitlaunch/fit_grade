@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'Views/Account_Page/account_screen.dart';
+import 'Views/Account_Page/home.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -19,10 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const AccountScreen(),
-      //HomePage(), //Terupro bmi
-      //CalculatorScreen(),  //Yassin calc
-      //Calculator(),
+      home: Home(),
     );
   }
 }
