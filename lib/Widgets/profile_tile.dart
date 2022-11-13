@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 //todo firestore and shared-preferences or hive  (fit together somehow)
 
 class BMITile extends StatelessWidget {
+  const BMITile({
+    Key? key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,6 +42,9 @@ class BMITile extends StatelessWidget {
 }
 
 class WaistHipTile extends StatelessWidget {
+  const WaistHipTile({
+    Key? key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -53,7 +59,7 @@ class WaistHipTile extends StatelessWidget {
         child: Row(
           children: [
             Column(
-              children: const [Icon(Icons.emoji_people_outlined)],
+              children: const [Icon(Icons.emoji_symbols_outlined)],
             ),
             Column(
               children: [
@@ -73,6 +79,9 @@ class WaistHipTile extends StatelessWidget {
 }
 
 class BMRTile extends StatelessWidget {
+  const BMRTile({
+    Key? key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -107,6 +116,9 @@ class BMRTile extends StatelessWidget {
 }
 
 class Other1Tile extends StatelessWidget {
+  const Other1Tile({
+    Key? key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -141,6 +153,9 @@ class Other1Tile extends StatelessWidget {
 }
 
 class Other2Tile extends StatelessWidget {
+  const Other2Tile({
+    Key? key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(

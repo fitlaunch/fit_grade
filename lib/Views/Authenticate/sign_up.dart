@@ -5,8 +5,8 @@ import '../Account_Page/account_screen.dart';
 //todo will basically work for an ugly dude created app
 // todo => verification, authentication, firestore,
 
-class Login extends StatelessWidget {
-  const Login({
+class SignUp extends StatelessWidget {
+  const SignUp({
     Key? key,
   }) : super(key: key);
 
@@ -19,7 +19,7 @@ class Login extends StatelessWidget {
           automaticallyImplyLeading: false,
           centerTitle: true,
           title: const Text(
-            'Sign In Here',
+            'Create Account',
           ),
         ),
         body: Container(

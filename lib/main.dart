@@ -1,7 +1,6 @@
+import 'package:fit_grade/Views/Authenticate/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'Views/Account_Page/home.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -19,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Home(),
+      home: SignUp(),
     );
   }
 }

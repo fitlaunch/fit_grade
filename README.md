@@ -1,6 +1,7 @@
 # fit_grade
 
-A new Flutter project.
+Yup, another new Flutter project.  This time working with Riverpod and Firebase to assist users in self assessing various aspects of their fitness.  Results will reveal how the user compares to age/gender norms and give a total Fit Grade Score when completing a battery of tests together.  Results will also be tracked over time for fitness programming evaluation.
+Connecting with others to compare or not results.  User leader boards.  And, User to user challenges may be an entertaining add on.
 
 ## Getting Started
 
