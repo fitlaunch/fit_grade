@@ -2,6 +2,8 @@ import 'package:fit_grade/Views/BMI/provide_bmi.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../Widgets/app_bar_primary.dart';
+
 class BMIScreen extends ConsumerWidget {
   const BMIScreen({Key? key}) : super(key: key);
 
@@ -12,19 +14,7 @@ class BMIScreen extends ConsumerWidget {
     final _height = ref.watch(heightProvider.notifier);
 
     return Scaffold(
-      appBar: AppBar(
-        // leading: InkWell(
-        //   onTap: () {
-        //     Navigator.pop(context);
-        //   },
-        //   child: const Icon(
-        //     Icons.arrow_back_ios_new,
-        //     color: Colors.white70,
-        //   ),
-        // ),
-        centerTitle: true,
-        title: const Text('BMI'),
-      ),
+      appBar: AppBarPrimary(title: 'BMI Assessment'),
       body: SingleChildScrollView(
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
@@ -91,7 +81,7 @@ class BMIScreen extends ConsumerWidget {
                       child: const Text('CALCULATE'),
                       onPressed: () {
                         FocusScope.of(context).unfocus();
-
+//todo fix this so calculating with blank fields prompts to complete
                         ///this is generating alert with data entered?
                         // if (_bmiValue.state == '') {
                         //   showDialog(

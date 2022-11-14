@@ -2,11 +2,12 @@ import 'package:fit_grade/Views/Settings/settings.dart';
 import 'package:flutter/material.dart';
 
 import '../Views/Authenticate/login.dart';
+import '../Views/Invite/invite_screen.dart';
 import '../Views/Support/contact_support.dart';
 
 class AppBarPrimary extends StatelessWidget with PreferredSizeWidget {
   AppBarPrimary({required this.title, Key? key})
-      : preferredSize = const Size.fromHeight(60),
+      : preferredSize = const Size.fromHeight(58),
         super(key: key);
 
   @override
@@ -25,6 +26,7 @@ class AppBarPrimary extends StatelessWidget with PreferredSizeWidget {
           style: const TextStyle(color: Colors.white),
         ),
         actions: <Widget>[
+          //todo set up notifications
           IconButton(
             icon: const Icon(Icons.notifications),
             onPressed: () {
@@ -39,10 +41,11 @@ class AppBarPrimary extends StatelessWidget with PreferredSizeWidget {
             child: PopupMenuButton<int>(
               color: Colors.black,
               itemBuilder: (context) => [
-                const PopupMenuItem<int>(value: 0, child: Text("Support")),
-                const PopupMenuItem<int>(value: 1, child: Text("Settings")),
+                const PopupMenuItem<int>(value: 0, child: Text("Invite")),
+                const PopupMenuItem<int>(value: 1, child: Text("Support")),
+                const PopupMenuItem<int>(value: 2, child: Text("Settings")),
                 const PopupMenuItem<int>(
-                    value: 2, child: Text("Privacy Policy")),
+                    value: 3, child: Text("Privacy Policy")),
                 const PopupMenuDivider(),
                 PopupMenuItem<int>(
                     value: 7,
@@ -59,7 +62,7 @@ class AppBarPrimary extends StatelessWidget with PreferredSizeWidget {
                       ],
                     )),
               ],
-              onSelected: (item) => SelectedItem(context, item),
+              onSelected: (item) => selectedItem(context, item),
             ),
           ),
         ],
@@ -69,21 +72,24 @@ class AppBarPrimary extends StatelessWidget with PreferredSizeWidget {
   }
 }
 
-void SelectedItem(BuildContext context, item) {
+void selectedItem(BuildContext context, item) {
   switch (item) {
     case 0:
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => const InviteScreen()));
+      break;
+    case 1:
       Navigator.of(context).push(
           MaterialPageRoute(builder: (context) => const ContactSupport()));
       break;
-    case 1:
+    case 2:
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => const Settings()));
       break;
-    case 2:
+    case 3:
       print("Privacy Clicked");
       break;
     case 7:
-      print("User Logged out");
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) => Login()), (route) => false);
       break;

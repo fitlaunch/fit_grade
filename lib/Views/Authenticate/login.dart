@@ -1,17 +1,27 @@
+import 'package:fit_grade/Views/Account_Page/account_screen.dart';
+import 'package:fit_grade/Widgets/wiggle_text.dart';
 import 'package:flutter/material.dart';
 
-import '../Account_Page/account_screen.dart';
-
-//todo will basically work for an ugly dude created app
-// todo => verification, authentication, firestore,
+//todo will basically work for an ugly, dude created app
+// todo => verification, authentication, firestore fix
 
 class Login extends StatelessWidget {
-  const Login({
+  Login({
     Key? key,
   }) : super(key: key);
 
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    // ref.listen<LoginState>(loginControllerProvider, (previous, state) {
+    //   if (state is LoginStateError) {
+    //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    //       content: Text(state.error),
+    //     ));
+    //   }
+    // });
     return Material(
       child: Scaffold(
         //appBar: AppBarPrimary(title: 'SIGN IN'),
@@ -19,7 +29,7 @@ class Login extends StatelessWidget {
           automaticallyImplyLeading: false,
           centerTitle: true,
           title: const Text(
-            'Sign In Here',
+            'Found Your Sign-In Screen',
           ),
         ),
         body: Container(
@@ -38,21 +48,18 @@ class Login extends StatelessWidget {
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'What is your fitness grade?',
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.lightBlue[900],
-                      ),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 50.0,
                     ),
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.only(top: 50.0, bottom: 100.0),
                     child: Image.asset('assets/images/tacwell_logo.png'),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(8.0, 8, 8, 35),
+                    child: WiggleText(
+                      text: 'What is your Fitness Grade?',
+                      shakeCount: 2,
+                      shakeOffset: 5,
+                    ),
                   ),
 
                   //todo Make this container stretch to bottom screen
@@ -107,7 +114,7 @@ class Login extends StatelessWidget {
                             ),
                             ElevatedButton(
                                 onPressed: () {
-                                  ///add LOGIN logic
+                                  // ///add LOGIN logic
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -115,6 +122,20 @@ class Login extends StatelessWidget {
                                               AccountScreen()));
                                 },
                                 child: const Text('Log In')),
+                            const SizedBox(
+                              height: 60,
+                            ),
+                            ElevatedButton(
+                                onPressed: () {
+                                  // ///add LOGIN logic
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              AccountScreen()));
+                                },
+                                child:
+                                    const Text('To Profile (not logged in)')),
                             const SizedBox(
                               height: 60,
                             ),

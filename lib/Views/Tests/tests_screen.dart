@@ -2,7 +2,7 @@ import 'package:fit_grade/Views/Authenticate/login.dart';
 import 'package:fit_grade/Widgets/app_bar_primary.dart';
 import 'package:flutter/material.dart';
 
-import '../Account_Page/account_drawer.dart';
+import '../../Widgets/assess_drawer.dart';
 import '../Account_Page/account_screen.dart';
 
 class TestsScreen extends StatelessWidget {
@@ -49,7 +49,7 @@ class TestsScreen extends StatelessWidget {
             TextButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Login()));
+                      MaterialPageRoute(builder: (context) => Login()));
                 },
                 child: const Text('LogIn')),
             TextButton(
@@ -61,7 +61,7 @@ class TestsScreen extends StatelessWidget {
           ],
         ),
       ),
-      drawer: const AccountDrawer(),
+      drawer: const AssessDrawer(),
     );
   }
 }

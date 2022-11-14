@@ -2,6 +2,7 @@ import 'package:fit_grade/Views/BMR/provide_bmr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../Widgets/app_bar_primary.dart';
 import '../BMI/provide_bmi.dart';
 
 class BMRScreen extends ConsumerWidget {
@@ -10,17 +11,14 @@ class BMRScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final _weight = ref.watch(weightProvider.notifier);
-    final age = ref.watch(ageProvider.notifier);
+    final _age = ref.watch(ageProvider.notifier);
     final _bmrMale = ref.watch(bmrMaleProvider.notifier);
     final _bmrFem = ref.watch(bmrFemProvider.notifier);
     final _height = ref.watch(heightProvider.notifier);
-    final genBtnBackground = ref.watch(genBtnBackgroundProvider.notifier);
+    final _genBtnBackground = ref.watch(genBtnBackgroundProvider.notifier);
 
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('BMR'),
-      ),
+      appBar: AppBarPrimary(title: 'BMR Assessment'),
       body: SingleChildScrollView(
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
@@ -95,7 +93,7 @@ class BMRScreen extends ConsumerWidget {
                               textAlignVertical: TextAlignVertical.center,
                               textAlign: TextAlign.center,
                               onChanged: (value) {
-                                age.state = value;
+                                _age.state = value;
                                 //print(value);
                               },
                             ),
@@ -133,7 +131,7 @@ class BMRScreen extends ConsumerWidget {
                                         ),
                                       )),
                                   onPressed: () {
-                                    genBtnBackground.state =
+                                    _genBtnBackground.state =
                                         GenBtnBackground.activeMale;
                                   },
                                   child: const Text(
@@ -169,7 +167,7 @@ class BMRScreen extends ConsumerWidget {
                                         ),
                                       )),
                                   onPressed: () {
-                                    genBtnBackground.state =
+                                    _genBtnBackground.state =
                                         GenBtnBackground.activeFem;
                                   },
                                   child: const Text(
@@ -197,12 +195,12 @@ class BMRScreen extends ConsumerWidget {
                               child: const Text('CALCULATE'),
                               onPressed: () {
                                 FocusScope.of(context).unfocus();
-                                if (genBtnBackground.state ==
+                                if (_genBtnBackground.state ==
                                     GenBtnBackground.activeMale) {
                                   _bmrMale.state = ProvideMaleBMR().getMaleBmr(
                                     int.parse(_height.state),
                                     int.parse(_weight.state),
-                                    int.parse(age.state),
+                                    int.parse(_age.state),
                                   );
                                 }
                               },
@@ -219,12 +217,12 @@ class BMRScreen extends ConsumerWidget {
                               child: const Text('CALCULATE'),
                               onPressed: () {
                                 FocusScope.of(context).unfocus();
-                                if (genBtnBackground.state ==
+                                if (_genBtnBackground.state ==
                                     GenBtnBackground.activeFem) {
                                   _bmrFem.state = ProvideFemBMR().getFemBmr(
                                     int.parse(_height.state),
                                     int.parse(_weight.state),
-                                    int.parse(age.state),
+                                    int.parse(_age.state),
                                   );
                                 }
                               },

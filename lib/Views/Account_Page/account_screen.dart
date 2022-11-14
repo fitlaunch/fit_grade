@@ -2,9 +2,11 @@ import 'package:fit_grade/Views/Tests/tests_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../Widgets/app_bar_primary.dart';
-import '../../Widgets/profile_tile.dart';
+import 'profile_tile.dart';
 
 class AccountScreen extends StatelessWidget {
+  const AccountScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,10 +23,9 @@ class AccountScreen extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Container(
-                width: double.infinity,
-                height: 350.0,
                 //todo user upload own background image and/or scroll to select one we make available
                 decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
                   image: DecorationImage(
                       image:
                           const AssetImage('assets/images/fantasy-power.jpg'),
@@ -38,24 +39,24 @@ class AccountScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const <Widget>[
-                      SizedBox(
+                    children: <Widget>[
+                      const SizedBox(
                         height: 15,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.all(8.0),
                         //todo placeholder head with user update profile image
                         child: CircleAvatar(
                           backgroundImage: NetworkImage(
                             "https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg",
                           ),
-                          radius: 60.0,
+                          radius: 75.0,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5.0,
                       ),
-                      Text(
+                      const Text(
                         //todo dynamic in name from user account creation
                         "Alice James",
                         style: TextStyle(
@@ -63,10 +64,25 @@ class AccountScreen extends StatelessWidget {
                           color: Colors.white,
                         ),
                       ),
-                      SizedBox(
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          //todo dynamic country from user account detail
+                          Text(
+                            'United States',
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          //todo dynamic flag image based on user account detail
+                          Icon(Icons.flag_rounded),
+                        ],
+                      ),
+                      const SizedBox(
                         height: 25.0,
                       ),
-                      CardWidget()
+                      const ActivityCard(),
                     ],
                   ),
                 ),
@@ -92,15 +108,15 @@ class AccountScreen extends StatelessWidget {
                             scrollDirection: Axis.horizontal,
                             //shrinkWrap: true,
                             physics: const BouncingScrollPhysics(),
-                            children: [
+                            children: const [
                               BMITile(),
-                              const SizedBox(width: 20),
+                              SizedBox(width: 20),
                               WaistHipTile(),
-                              const SizedBox(width: 20),
+                              SizedBox(width: 20),
                               BMRTile(),
-                              const SizedBox(width: 20),
+                              SizedBox(width: 20),
                               Other1Tile(),
-                              const SizedBox(width: 20),
+                              SizedBox(width: 20),
                               Other2Tile(),
                             ],
                           ),
@@ -140,7 +156,7 @@ class AccountScreen extends StatelessWidget {
                           const Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Text(
-                              "Current Goals:",
+                              "My Motivation:",
                               style: TextStyle(
                                   color: Colors.blueAccent,
                                   fontStyle: FontStyle.normal,
@@ -177,7 +193,7 @@ class AccountScreen extends StatelessWidget {
                       const SizedBox(
                         height: 20.0,
                       ),
-                      const ContactButton(),
+                      const AssessButton(),
                     ],
                   ),
                 ),
@@ -190,8 +206,8 @@ class AccountScreen extends StatelessWidget {
   }
 }
 
-class ContactButton extends StatelessWidget {
-  const ContactButton({
+class AssessButton extends StatelessWidget {
+  const AssessButton({
     Key? key,
   }) : super(key: key);
 
@@ -240,8 +256,8 @@ class ContactButton extends StatelessWidget {
   }
 }
 
-class CardWidget extends StatelessWidget {
-  const CardWidget({
+class ActivityCard extends StatelessWidget {
+  const ActivityCard({
     Key? key,
   }) : super(key: key);
 
