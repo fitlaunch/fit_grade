@@ -1,4 +1,6 @@
+import 'package:fit_grade/Widgets/wiggle_text.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../Account_Page/account_screen.dart';
 
@@ -6,9 +8,16 @@ import '../Account_Page/account_screen.dart';
 // todo => verification, authentication, firestore,
 
 class SignUp extends StatelessWidget {
-  const SignUp({
+  SignUp({
     Key? key,
   }) : super(key: key);
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  static final DateTime date = DateTime.now();
+  static final DateFormat formatter = DateFormat('yyyy');
+  final String formatted = formatter.format(date);
+  //String formatter = DateFormat('yyyy').format();
 
   @override
   Widget build(BuildContext context) {
@@ -37,18 +46,22 @@ class SignUp extends StatelessWidget {
               margin: const EdgeInsets.all(5),
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'What is your fitness grade?',
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.lightBlue[900],
+                  const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: WiggleText(
+                        text: 'What is your grade?',
+                        shakeOffset: 2,
+                        shakeCount: 5,
+                      )
+                      //Text(
+                      // 'What is your fitness grade?',
+                      // style: TextStyle(
+                      //   fontSize: 22,
+                      //   fontStyle: FontStyle.italic,
+                      //   fontWeight: FontWeight.bold,
+                      //   color: Colors.lightBlue[900],
+                      // ),
                       ),
-                    ),
-                  ),
 
                   Padding(
                     padding: const EdgeInsets.only(top: 50.0, bottom: 100.0),
@@ -84,19 +97,22 @@ class SignUp extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            const TextField(
+                            TextField(
+                              controller: _emailController,
                               //onChanged: (){},
                               keyboardType: TextInputType.emailAddress,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 hintText: 'you@example.com',
                                 labelText: 'Email Address',
                                 //errorText: 'Something went wrong',
                               ),
                             ),
-                            const TextField(
+                            TextField(
+                              controller: _passwordController,
                               //onChanged: (){},
-                              keyboardType: TextInputType.numberWithOptions(),
-                              decoration: InputDecoration(
+                              keyboardType:
+                                  const TextInputType.numberWithOptions(),
+                              decoration: const InputDecoration(
                                 hintText: 'password',
                                 labelText: 'Password',
                                 //errorText: 'Something went wrong',
@@ -112,9 +128,9 @@ class SignUp extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              AccountScreen()));
+                                              const AccountScreen()));
                                 },
-                                child: const Text('Log In')),
+                                child: const Text('Create Account')),
                             const SizedBox(
                               height: 60,
                             ),
@@ -122,15 +138,15 @@ class SignUp extends StatelessWidget {
                                 alignment: Alignment.bottomCenter,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const <Widget>[
-                                    Icon(
+                                  children: <Widget>[
+                                    const Icon(
                                       Icons.star_border_outlined,
                                       color: Colors.black38,
                                       size: 12,
                                     ),
                                     Text(
-                                      "copyright FIT Launch, Inc.",
-                                      style: TextStyle(
+                                      "copyright ioLaunch $formatted",
+                                      style: const TextStyle(
                                         fontSize: 11,
                                         color: Colors.black38,
                                       ),

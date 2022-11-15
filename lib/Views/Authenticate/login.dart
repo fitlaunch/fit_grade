@@ -91,19 +91,22 @@ class Login extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            const TextField(
+                            TextField(
+                              controller: emailController,
                               //onChanged: (){},
                               keyboardType: TextInputType.emailAddress,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 hintText: 'you@example.com',
                                 labelText: 'Email Address',
                                 //errorText: 'Something went wrong',
                               ),
                             ),
-                            const TextField(
+                            TextField(
+                              controller: passwordController,
                               //onChanged: (){},
-                              keyboardType: TextInputType.numberWithOptions(),
-                              decoration: InputDecoration(
+                              keyboardType:
+                                  const TextInputType.numberWithOptions(),
+                              decoration: const InputDecoration(
                                 hintText: 'password',
                                 labelText: 'Password',
                                 //errorText: 'Something went wrong',
@@ -119,7 +122,7 @@ class Login extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              AccountScreen()));
+                                              const AccountScreen()));
                                 },
                                 child: const Text('Log In')),
                             const SizedBox(
