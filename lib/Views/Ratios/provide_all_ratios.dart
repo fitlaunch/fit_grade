@@ -4,11 +4,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class RatiosNotifier extends StateNotifier<List<Ratio>> {
   RatiosNotifier() : super(allRatios);
 
-  void update(Ratio ratio, bool isFavorite) {
+  void updateFav(Ratio ratio, bool isFavorite) {
     state = state
-        .map((thisFilm) => thisFilm.id == ratio.id
-            ? thisFilm.copy(isFavorite: isFavorite)
-            : thisFilm)
+        .map((thisRatio) => thisRatio.id == ratio.id
+            ? thisRatio.copy(isFavorite: isFavorite)
+            : thisRatio)
         .toList();
   }
 }

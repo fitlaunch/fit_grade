@@ -2,6 +2,7 @@ import 'package:fit_grade/Views/Ratios/ratio_providers.dart';
 import 'package:fit_grade/Widgets/app_bar_primary.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+//import 'package:fit_grade/Views/Ratios/provide_all_ratios.dart';
 
 class RatiosScreen extends ConsumerWidget {
   const RatiosScreen({
@@ -12,39 +13,69 @@ class RatiosScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final ratios = ref.watch(allRatioProvider);
     final fav = ref.watch(allRatioProvider).where((ratio) => ratio.isFavorite);
+
     return Scaffold(
       appBar: AppBarPrimary(title: 'Anthropomorphic Measures'),
-      body: ListView.builder(
-        itemCount: ratios.length,
-        itemBuilder: (context, index) {
-          final ratio = ratios.elementAt(index);
-          final favoriteIcon = ratio.isFavorite
-              ? const Icon(
-                  Icons.favorite,
-                  color: Colors.blue,
-                )
-              : const Icon(Icons.favorite_border);
-          return Column(
-            children: [
-              ListTile(
-                title: Text(ratio.title),
-                subtitle: Text(ratio.description),
-                trailing: IconButton(
-                  icon: favoriteIcon,
-                  onPressed: () {
-                    favoriteIcon;
-                  },
-                  //   final isFavorite = !ratio.isFavorite;
-                  //   ref
-                  //       .read(allRatiosProvider.notifier)
-                  //       .update(ratio, ratio.isFavorite);
-                  // },
-                ),
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Container(
+              height: 150,
+              padding: const EdgeInsets.all(8),
+              margin: const EdgeInsets.fromLTRB(0, 8, 0, 4),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: const Color(0xffDB1F48),
               ),
-              const Divider(),
-            ],
-          );
-        },
+            ),
+            const Divider(thickness: 3),
+            Expanded(
+              child: ListView.builder(
+                itemCount: ratios.length,
+                itemBuilder: (context, index) {
+                  final ratio = ratios.elementAt(index);
+                  final favoriteIcon = ratio.isFavorite
+                      ? const Icon(
+                          Icons.favorite,
+                          color: Colors.blue,
+                        )
+                      : const Icon(Icons.favorite_border);
+                  return Column(
+                    children: [
+                      ListTile(
+                        shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(12),
+                                topRight: Radius.circular(12),
+                                bottomRight: Radius.circular(12),
+                                bottomLeft: Radius.circular(12))),
+                        tileColor: const Color(0xffE5DDC8),
+                        title: Text(ratio.title),
+                        subtitle: Text(ratio.description),
+                        trailing: IconButton(
+                          icon: favoriteIcon,
+                          onPressed: () {
+                            //updateFav();
+
+                            // final isFavorite = !ratio.isFavorite;
+                            // ref
+                            //     .read(allRatioProvider.notifier)
+                            //     .update(ratio, ratio.isFavorite);
+                            //
+                            // final isFavorite = ratio.isFavorite;
+                          },
+                        ),
+                      ),
+                      const Divider(),
+                    ],
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -102,31 +133,31 @@ const allRatios = [
     isFavorite: false,
   ),
   Ratio(
-    id: '4',
+    id: '5',
     title: 'Waist to Height',
     description: 'Ratio of waist to height',
     isFavorite: false,
   ),
   Ratio(
-    id: '5',
+    id: '6',
     title: 'Bioelectrical Impedance',
     description: 'Body fat percentage calculation',
     isFavorite: false,
   ),
   Ratio(
-    id: '4',
+    id: '7',
     title: 'Caliper Measure',
     description: 'Body fat percentage calculation',
     isFavorite: false,
   ),
   Ratio(
-    id: '4',
+    id: '8',
     title: 'Girth Relations',
     description: 'Body fat percentage caclulation',
     isFavorite: false,
   ),
   Ratio(
-    id: '4',
+    id: '9',
     title: 'Girth Measures',
     description: 'Body circumference tracking',
     isFavorite: false,
