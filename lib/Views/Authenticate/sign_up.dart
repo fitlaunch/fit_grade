@@ -14,10 +14,10 @@ class SignUp extends StatelessWidget {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  //did the following using riverpod on login screen
   static final DateTime date = DateTime.now();
   static final DateFormat formatter = DateFormat('yyyy');
   final String formatted = formatter.format(date);
-  //String formatter = DateFormat('yyyy').format();
 
   @override
   Widget build(BuildContext context) {

@@ -1,11 +1,16 @@
 import 'package:fit_grade/Views/Account_Page/account_screen.dart';
+import 'package:fit_grade/Views/Authenticate/Providers/copyYearProvider.dart';
 import 'package:fit_grade/Widgets/wiggle_text.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 //todo will basically work for an ugly, dude created app
 // todo => verification, authentication, firestore fix
 
-class Login extends StatelessWidget {
+final currentDate =
+    StateNotifierProvider<CopyYear, String>((ref) => CopyYear());
+
+class Login extends ConsumerWidget {
   Login({
     Key? key,
   }) : super(key: key);
@@ -14,14 +19,9 @@ class Login extends StatelessWidget {
   TextEditingController passwordController = TextEditingController();
 
   @override
-  Widget build(BuildContext context) {
-    // ref.listen<LoginState>(loginControllerProvider, (previous, state) {
-    //   if (state is LoginStateError) {
-    //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-    //       content: Text(state.error),
-    //     ));
-    //   }
-    // });
+  Widget build(BuildContext context, ref) {
+    final dateSet = ref.read(currentDate.notifier).year();
+
     return Material(
       child: Scaffold(
         //appBar: AppBarPrimary(title: 'SIGN IN'),
@@ -29,7 +29,7 @@ class Login extends StatelessWidget {
           automaticallyImplyLeading: false,
           centerTitle: true,
           title: const Text(
-            'Found Your Sign-In Screen',
+            'Come On In',
           ),
         ),
         body: Container(
@@ -128,37 +128,30 @@ class Login extends StatelessWidget {
                             const SizedBox(
                               height: 60,
                             ),
-                            ElevatedButton(
-                                onPressed: () {
-                                  // ///add LOGIN logic
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              AccountScreen()));
-                                },
-                                child:
-                                    const Text('To Profile (not logged in)')),
-                            const SizedBox(
-                              height: 60,
-                            ),
                             Align(
                                 alignment: Alignment.bottomCenter,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const <Widget>[
-                                    Icon(
+                                  children: <Widget>[
+                                    const Icon(
                                       Icons.star_border_outlined,
                                       color: Colors.black38,
                                       size: 12,
                                     ),
-                                    Text(
-                                      "copyright FIT Launch, Inc.",
+                                    const Text(
+                                      "copyright ioLaunch ",
                                       style: TextStyle(
                                         fontSize: 11,
                                         color: Colors.black38,
                                       ),
-                                    )
+                                    ),
+                                    Text(
+                                      dateSet,
+                                      style: const TextStyle(
+                                        fontSize: 11,
+                                        color: Colors.black38,
+                                      ),
+                                    ),
                                   ],
                                 )),
                           ],

@@ -1,7 +1,7 @@
-import 'package:fit_grade/Views/BMR/bmr_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../BMI/bmi_screen.dart';
+import '../Ratios/BMI/bmi_screen.dart';
+import '../Ratios/BMR/bmr_screen.dart';
 
 //todo emoji specific to each attribute
 //todo tie in dynamic score loading for the specific user profile

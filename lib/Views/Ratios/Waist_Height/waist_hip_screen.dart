@@ -1,20 +1,21 @@
-import 'package:fit_grade/Views/BMI/provide_bmi.dart';
+import 'package:fit_grade/Views/Ratios/Waist_Height/provide_waist_hip_ratio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../Widgets/app_bar_primary.dart';
+import '../../../Widgets/app_bar_primary.dart';
+import '../ratio_providers.dart';
 
-class BMIScreen extends ConsumerWidget {
-  const BMIScreen({Key? key}) : super(key: key);
+class WaistHipScreen extends ConsumerWidget {
+  const WaistHipScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _weight = ref.watch(weightProvider.notifier);
-    final _bmiValue = ref.watch(bmiValueProvider.notifier);
-    final _height = ref.watch(heightProvider.notifier);
+    final _waist = ref.watch(waistProvider.notifier);
+    final _waistHipRatio = ref.watch(waistHipRatioProvider.notifier);
+    final _hip = ref.watch(hipProvider.notifier);
 
     return Scaffold(
-      appBar: AppBarPrimary(title: 'BMI Assessment'),
+      appBar: AppBarPrimary(title: 'Waist  Assessment'),
       body: SingleChildScrollView(
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
@@ -35,7 +36,7 @@ class BMIScreen extends ConsumerWidget {
                         //label: 'HEIGHT (cm)',
                         child: TextFormField(
                           decoration: const InputDecoration(
-                            hintText: 'Height (inch)',
+                            hintText: 'Waist (inch)',
                           ),
                           keyboardType: TextInputType.number,
                           style: const TextStyle(
@@ -43,7 +44,7 @@ class BMIScreen extends ConsumerWidget {
                           textAlignVertical: TextAlignVertical.center,
                           textAlign: TextAlign.center,
                           onChanged: (value) {
-                            _height.state = value;
+                            _waist.state = value;
                             //print(value);
                           },
                         ),
@@ -58,7 +59,7 @@ class BMIScreen extends ConsumerWidget {
 
                         child: TextFormField(
                           decoration: const InputDecoration(
-                            hintText: 'Weight (lbs)',
+                            hintText: 'Hip (inch)',
                           ),
                           keyboardType: TextInputType.number,
                           style: const TextStyle(
@@ -66,7 +67,7 @@ class BMIScreen extends ConsumerWidget {
                           textAlignVertical: TextAlignVertical.center,
                           textAlign: TextAlign.center,
                           onChanged: (value) {
-                            _weight.state = value;
+                            _hip.state = value;
                             //print(value);
                           },
                         ),
@@ -105,9 +106,9 @@ class BMIScreen extends ConsumerWidget {
                         //   );
                         // } else
                         {
-                          _bmiValue.state = ProvideBMI().getBmiValue(
-                              int.parse(_height.state),
-                              int.parse(_weight.state));
+                          _waistHipRatio.state = ProvideWaistHipRatio()
+                              .getWaistHipRatioValue(int.parse(_waist.state),
+                                  int.parse(_hip.state));
                         }
                       }),
                 ),
@@ -123,7 +124,7 @@ class BMIScreen extends ConsumerWidget {
 
   Text theText(WidgetRef ref) {
     return Text(
-      ref.watch(bmiValueProvider).toString(),
+      ref.watch(waistHipRatioProvider).toString(),
       style: const TextStyle(color: Colors.green, fontSize: 40),
     );
   }

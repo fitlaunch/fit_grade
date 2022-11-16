@@ -1,6 +1,8 @@
-import 'package:fit_grade/Views/BMI/bmi_screen.dart';
-import 'package:fit_grade/Views/BMR/bmr_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../Ratios/BMI/bmi_screen.dart';
+import '../Ratios/BMR/bmr_screen.dart';
+import '../Ratios/ratios_screen.dart';
 
 class AssessDrawer extends StatelessWidget {
   const AssessDrawer({
@@ -90,10 +92,11 @@ class AssessDrawer extends StatelessWidget {
               ListTile(
                 title: const Text('Girth, Ratios, & BF%'),
                 onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const RatiosScreen()),
+                  );
                 },
               ),
               ListTile(

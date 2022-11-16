@@ -10,7 +10,3 @@ class ProvideBMI extends StateNotifier<String> {
     return bmi.toStringAsFixed(2);
   }
 }
-
-final heightProvider = StateNotifierProvider((ref) => ProvideBMI());
-final weightProvider = StateNotifierProvider((ref) => ProvideBMI());
-final bmiValueProvider = StateNotifierProvider((ref) => ProvideBMI());

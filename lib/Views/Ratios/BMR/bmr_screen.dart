@@ -1,9 +1,9 @@
-import 'package:fit_grade/Views/BMR/provide_bmr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../Widgets/app_bar_primary.dart';
-import '../BMI/provide_bmi.dart';
+import '../../../Widgets/app_bar_primary.dart';
+import '../ratio_providers.dart';
+import 'BMR_Providers/provide_bmr.dart';
 
 class BMRScreen extends ConsumerWidget {
   const BMRScreen({Key? key}) : super(key: key);

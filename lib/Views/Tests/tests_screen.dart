@@ -2,8 +2,8 @@ import 'package:fit_grade/Views/Authenticate/login.dart';
 import 'package:fit_grade/Widgets/app_bar_primary.dart';
 import 'package:flutter/material.dart';
 
-import '../../Widgets/assess_drawer.dart';
 import '../Account_Page/account_screen.dart';
+import 'assess_drawer.dart';
 
 class TestsScreen extends StatelessWidget {
   const TestsScreen({Key? key}) : super(key: key);
@@ -57,7 +57,7 @@ class TestsScreen extends StatelessWidget {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => AccountScreen()));
                 },
-                child: const Text('Home'))
+                child: const Text('Account'))
           ],
         ),
       ),
