@@ -1,21 +1,23 @@
-import 'package:fit_grade/Views/Ratios/Waist_Height/provide_waist_hip_ratio.dart';
+import 'package:fit_grade/Views/Ratios/Waist_Hip/provide_waist_hip_ratio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../Widgets/app_bar_primary.dart';
 import '../ratio_providers.dart';
 
+//final waistHipRatio = StateNotifierProvider<ProvideWaistHipRatio, String>((ref) => ProvideWaistHipRatio());
+
 class WaistHipScreen extends ConsumerWidget {
   const WaistHipScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _waist = ref.watch(waistProvider.notifier);
-    final _waistHipRatio = ref.watch(waistHipRatioProvider.notifier);
-    final _hip = ref.watch(hipProvider.notifier);
+    final waist = ref.watch(waistProvider.notifier);
+    final waistHipRatio = ref.watch(waistHipRatioProvider.notifier);
+    final hip = ref.watch(hipProvider.notifier);
 
     return Scaffold(
-      appBar: AppBarPrimary(title: 'Waist  Assessment'),
+      appBar: AppBarPrimary(title: 'Waist/Hip  Assessment'),
       body: SingleChildScrollView(
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
@@ -23,7 +25,7 @@ class WaistHipScreen extends ConsumerWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Enter some stuff to get your bmi'),
+                const Text('Enter some stuff to get your waist hip ratio'),
                 const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -44,7 +46,7 @@ class WaistHipScreen extends ConsumerWidget {
                           textAlignVertical: TextAlignVertical.center,
                           textAlign: TextAlign.center,
                           onChanged: (value) {
-                            _waist.state = value;
+                            waist.state = value;
                             //print(value);
                           },
                         ),
@@ -67,7 +69,7 @@ class WaistHipScreen extends ConsumerWidget {
                           textAlignVertical: TextAlignVertical.center,
                           textAlign: TextAlign.center,
                           onChanged: (value) {
-                            _hip.state = value;
+                            hip.state = value;
                             //print(value);
                           },
                         ),
@@ -106,9 +108,9 @@ class WaistHipScreen extends ConsumerWidget {
                         //   );
                         // } else
                         {
-                          _waistHipRatio.state = ProvideWaistHipRatio()
-                              .getWaistHipRatioValue(int.parse(_waist.state),
-                                  int.parse(_hip.state));
+                          waistHipRatio.state = ProvideWaistHipRatio()
+                              .getWaistHipRatioValue(
+                                  int.parse(waist.state), int.parse(hip.state));
                         }
                       }),
                 ),

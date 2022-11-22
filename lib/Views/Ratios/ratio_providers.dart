@@ -1,9 +1,7 @@
-import 'package:fit_grade/Views/Ratios/provide_all_ratios.dart';
-import 'package:fit_grade/Views/Ratios/ratios_screen.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'BMI/BMI_Providers/provide_bmi.dart';
-import 'Waist_Height/provide_waist_hip_ratio.dart';
+import 'Waist_Hip/provide_waist_hip_ratio.dart';
 
 //BMI
 final heightProvider = StateNotifierProvider((ref) => ProvideBMI());
@@ -17,11 +15,12 @@ final waistHipRatioProvider =
 final hipProvider = StateNotifierProvider((ref) => ProvideWaistHipRatio());
 
 //All Ratios List ratios_screen.dart
-final allRatioProvider = StateNotifierProvider<RatiosNotifier, List<Ratio>>(
-  (_) => RatiosNotifier(),
-);
 
-final favoriteRatioProvider = StateNotifierProvider((ref) => RatiosNotifier());
+//  final allRatioProvider = StateNotifierProvider<RatiosNotifier, List<Ratio>>(
+//   (_) => RatiosNotifier(),
+// );
+
+//final favoriteRatioProvider = StateNotifierProvider((ref) => RatiosNotifier());
 // final favoriteRatioProvider = StateNotifierProvider<Iterable bool<Ratios>>((ref) =>
 //     ref.watch(allRatioProvider).where((ratio) => ratio.isFavorite),
 // );

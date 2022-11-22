@@ -1,32 +1,21 @@
 import 'package:fit_grade/Views/Authenticate/login.dart';
+import 'package:fit_grade/Views/LeaderBoards/leader_boards_screen.dart';
 import 'package:fit_grade/Widgets/app_bar_primary.dart';
 import 'package:flutter/material.dart';
 
-import '../Account_Page/account_screen.dart';
 import 'assess_drawer.dart';
 
-class TestsScreen extends StatelessWidget {
-  const TestsScreen({Key? key}) : super(key: key);
+///need to adjust something on BAB (southernappbar) so that it doesn't default
+///to the 0 position screen when landing on a page with BAB for first time.
+
+class TestsLandingScreen extends StatelessWidget {
+  const TestsLandingScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarPrimary(
-        title: 'TESTS & BATTERIES',
-      ),
-      // appBar: AppBar(
-      //   leading: IconButton(
-      //     icon: const Icon(Icons.arrow_back_ios_new),
-      //     onPressed: () {
-      //       Navigator.pop(context);
-      //     },
-      //   ),
-      //   title: const Center(
-      //     child: Text(
-      //       'Account Screen',
-      //     ),
-      //   ),
-      // ),
+      appBar: AppBarPrimary(title: 'TESTS & BATTERIES'),
+      //bottomNavigationBar: SouthernAppBar(),
       floatingActionButton: Builder(builder: (context) {
         return FloatingActionButton(
           child: const Icon(
@@ -54,10 +43,12 @@ class TestsScreen extends StatelessWidget {
                 child: const Text('LogIn')),
             TextButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AccountScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LeaderBoardsScreen()));
                 },
-                child: const Text('Account'))
+                child: const Text('Leader Board'))
           ],
         ),
       ),

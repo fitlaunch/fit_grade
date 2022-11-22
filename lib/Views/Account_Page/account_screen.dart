@@ -1,4 +1,4 @@
-import 'package:fit_grade/Views/Tests/tests_screen.dart';
+import 'package:fit_grade/Views/Tests/tests_landing_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../Widgets/app_bar_primary.dart';
@@ -11,6 +11,7 @@ class AccountScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarPrimary(title: 'MY FITNESS PROFILE'),
+      //bottomNavigationBar: SouthernAppBar(),
       body: SingleChildScrollView(
         child: Container(
           decoration: const BoxDecoration(
@@ -219,7 +220,8 @@ class AssessButton extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const TestsScreen()),
+              MaterialPageRoute(
+                  builder: (context) => const TestsLandingScreen()),
             );
           },
           style: ElevatedButton.styleFrom(
@@ -244,7 +246,7 @@ class AssessButton extends StatelessWidget {
               decoration:
                   BoxDecoration(borderRadius: BorderRadius.circular(20)),
               child: const Text(
-                "Assessments",
+                "Some Link Maybe",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 24.0,

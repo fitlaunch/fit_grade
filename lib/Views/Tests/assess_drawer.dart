@@ -1,8 +1,8 @@
+import 'package:fit_grade/Views/Ratios/anthro_measures_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../Ratios/BMI/bmi_screen.dart';
-import '../Ratios/BMR/bmr_screen.dart';
-import '../Ratios/ratios_screen.dart';
+import 'Batteries/batteries_screen.dart';
+import 'Challenges/challenge_screen.dart';
 
 class AssessDrawer extends StatelessWidget {
   const AssessDrawer({
@@ -58,35 +58,23 @@ class AssessDrawer extends StatelessWidget {
                 ),
               ),
               ListTile(
-                title: const Text('Life-Fit Battery'),
+                title: const Text('Assessment Batteries'),
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const BMIScreen()),
+                    MaterialPageRoute(
+                        builder: (context) => const BatteriesScreen()),
                   );
-                  // Navigator.pushReplacement(context,
-                  //     MaterialPageRoute(builder: (context) => const BMIScreen()));
-                  //  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: const Text('Power Field Athlete Battery'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const BMRScreen()),
-                  );
-                  // Navigator.pushReplacement(context,
-                  //     MaterialPageRoute(builder: (context) => const BMRScreen()));
                 },
               ),
               ListTile(
                 title: const Text('Challenges'),
                 onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ChallengeScreen(),
+                      ));
                 },
               ),
               ListTile(
@@ -95,7 +83,7 @@ class AssessDrawer extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const RatiosScreen()),
+                        builder: (context) => const AnthroMeasuresScreen()),
                   );
                 },
               ),
