@@ -1,8 +1,12 @@
 import 'package:fit_grade/Views/Authenticate/login.dart';
 import 'package:fit_grade/Views/LeaderBoards/leader_boards_screen.dart';
+import 'package:fit_grade/Views/Ratios/BMI/bmi_screen.dart';
 import 'package:fit_grade/Widgets/app_bar_primary.dart';
 import 'package:flutter/material.dart';
 
+import '../Counter/counter_screen.dart';
+import '../Ratios/BMR/bmr_screen.dart';
+import '../Ratios/Waist_Height/waist_height_screen.dart';
 import 'assess_drawer.dart';
 
 ///need to adjust something on BAB (southernappbar) so that it doesn't default
@@ -48,7 +52,38 @@ class TestsLandingScreen extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) => const LeaderBoardsScreen()));
                 },
-                child: const Text('Leader Board'))
+                child: const Text('Leader Board')),
+            TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CounterScreen()));
+                },
+                child: const Text('Counter')),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const WaistHeightScreen()));
+              },
+              child: const Text('Waist-Height'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const BMIScreen()));
+              },
+              child: const Text('BMI'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const BMRScreen()));
+              },
+              child: const Text('BMR'),
+            ),
           ],
         ),
       ),

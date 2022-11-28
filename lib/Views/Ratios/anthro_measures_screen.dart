@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../Widgets/BAB/southernAppBar.dart';
-
 class AnthroMeasuresScreen extends ConsumerWidget {
   const AnthroMeasuresScreen({
     Key? key,
@@ -14,7 +12,7 @@ class AnthroMeasuresScreen extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('List of Anthropromorphic assess options'),
       ),
-      bottomNavigationBar: SouthernAppBar(),
+      //bottomNavigationBar: SouthernAppBar(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

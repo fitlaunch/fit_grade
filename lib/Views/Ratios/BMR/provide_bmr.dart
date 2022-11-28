@@ -37,6 +37,5 @@ class ProvideFemBMR extends StateNotifier<String> {
 
 final bmrMaleProvider = StateNotifierProvider((ref) => ProvideMaleBMR());
 final ageProvider = StateNotifierProvider((ref) => ProvideMaleBMR());
-
 final bmrFemProvider = StateNotifierProvider((ref) => ProvideFemBMR());
 //final ageFemProvider = StateNotifierProvider((ref) => ProvideFemBMR());

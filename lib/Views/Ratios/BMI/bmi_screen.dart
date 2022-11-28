@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../Widgets/app_bar_primary.dart';
-import '../ratio_providers.dart';
-import 'BMI_Providers/provide_bmi.dart';
+import 'provide_bmi.dart';
 
 class BMIScreen extends ConsumerWidget {
   const BMIScreen({Key? key}) : super(key: key);
