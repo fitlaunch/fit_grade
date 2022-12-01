@@ -5,16 +5,21 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../Widgets/app_bar_primary.dart';
 
 class WaistHeightScreen extends ConsumerWidget {
-  const WaistHeightScreen({Key? key}) : super(key: key);
+  WaistHeightScreen({Key? key}) : super(key: key);
+
+  TextEditingController waistController = TextEditingController();
+  TextEditingController heightController = TextEditingController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // these work for statenotifier/statenotifierprovider but not notifier/notifierprovider
     // final waist = ref.watch(waistProvider.notifier);
     // final waistHeightRatio = ref.watch(waistHeightRatioProvider.notifier);
     // final height = ref.watch(heightProvider.notifier);
     final waistHeightRatio = ref.watch(waistHeightRatioProvider);
     final height = ref.watch(heightProvider);
     final waist = ref.watch(waistProvider);
+    dialogRef(ref, context);
 
     return Scaffold(
       appBar: AppBarPrimary(title: 'Waist/Height  Assessment'),
@@ -38,6 +43,8 @@ class WaistHeightScreen extends ConsumerWidget {
                         //child: InputContent(
                         //label: 'HEIGHT (cm)',
                         child: TextFormField(
+                          controller: waistController,
+                          cursorColor: Colors.white,
                           decoration: const InputDecoration(
                             hintText: 'Waist (inch)',
                           ),
@@ -47,8 +54,9 @@ class WaistHeightScreen extends ConsumerWidget {
                           textAlignVertical: TextAlignVertical.center,
                           textAlign: TextAlign.center,
                           onChanged: (value) {
-                            ref.read(waistProvider);
-                            print(waistProvider.toString());
+                            waist;
+                            // ref.read(waistProvider);
+                            print(waist.toString());
                             //waist.state = value;
                           },
                         ),
@@ -62,6 +70,8 @@ class WaistHeightScreen extends ConsumerWidget {
                         //label: 'WEIGHT (kg)',
 
                         child: TextFormField(
+                          controller: heightController,
+                          cursorColor: Colors.white,
                           decoration: const InputDecoration(
                             hintText: 'Height (inch)',
                           ),
@@ -71,8 +81,9 @@ class WaistHeightScreen extends ConsumerWidget {
                           textAlignVertical: TextAlignVertical.center,
                           textAlign: TextAlign.center,
                           onChanged: (value) {
-                            ref.read(heightProvider);
-                            print(heightProvider.toString());
+                            height;
+                            //ref.read(heightProvider);
+                            print(height.toString());
                             //height.state = value;
                           },
                         ),
@@ -97,16 +108,57 @@ class WaistHeightScreen extends ConsumerWidget {
                       ),
                 ),
                 const SizedBox(height: 25),
-                Text(
-                  // ref.watch(waistHeightRatioProvider).toString(),
-                  'Waist to Height Ratio is: $waistHeightRatio',
-                  style: const TextStyle(color: Colors.purple),
-                )
+                Text(waistHeightRatio.toString())
+                // Text(
+                //   // ref.watch(waistHeightRatioProvider).toString(),
+                //   'Waist to Height Ratio is: waistHeightRatio',
+                //   style: const TextStyle(color: Colors.purple),
+                // )
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  //ToDo: pull this to own widget file for use with all individual assessments
+  void dialogRef(WidgetRef ref, BuildContext context) {
+    ref.listen<int>(waistHeightRatioProvider, (previous, next) {
+      if (next <= .40) {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                  title: const Text('Warning'),
+                  content: const Text('Your too thin. \n Score: 4/10'),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text('OK'),
+                    )
+                  ]);
+            });
+      } else if (next > .4 && next < 52) {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                  title: const Text('NOICE'),
+                  content:
+                      const Text('Your too just about right. \n Score: 9/10'),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text('OK'),
+                    )
+                  ]);
+            });
+      }
+    });
   }
 }

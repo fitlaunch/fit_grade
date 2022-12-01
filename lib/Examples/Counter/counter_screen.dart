@@ -1,8 +1,7 @@
-import 'package:fit_grade/Views/Counter/counter.dart';
-//import 'package:fit_grade/Views/Counter/counter.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'counter.dart';
 import 'counter2_screen.dart';
 
 class CounterScreen extends ConsumerWidget {

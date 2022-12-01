@@ -1,10 +1,12 @@
+import 'package:fit_grade/Examples/Task_Progress/task_screen.dart';
 import 'package:fit_grade/Views/Authenticate/login.dart';
 import 'package:fit_grade/Views/LeaderBoards/leader_boards_screen.dart';
 import 'package:fit_grade/Views/Ratios/BMI/bmi_screen.dart';
+import 'package:fit_grade/Views/Ratios/Waist_Hip/waist_hip_screen.dart';
 import 'package:fit_grade/Widgets/app_bar_primary.dart';
 import 'package:flutter/material.dart';
 
-import '../Counter/counter_screen.dart';
+import '../../Examples/Counter/counter_screen.dart';
 import '../Ratios/BMR/bmr_screen.dart';
 import '../Ratios/Waist_Height/waist_height_screen.dart';
 import 'assess_drawer.dart';
@@ -66,7 +68,7 @@ class TestsLandingScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const WaistHeightScreen()));
+                        builder: (context) => WaistHeightScreen()));
               },
               child: const Text('Waist-Height'),
             ),
@@ -84,6 +86,37 @@ class TestsLandingScreen extends StatelessWidget {
               },
               child: const Text('BMR'),
             ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const WaistHipScreen()));
+              },
+              child: const Text('Waist-Hip'),
+            ),
+            const Text('R-Pod EXAMPLES GRABBED'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => TaskScreen()));
+                  },
+                  child: const Text('Task Progress'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CounterScreen()));
+                  },
+                  child: const Text('Count 1'),
+                ),
+              ],
+            )
           ],
         ),
       ),

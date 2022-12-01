@@ -1,5 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+///Riverpod 2.0 prefer Notifier and AsyncNotifier
+
 class ProvideWaistHeight extends Notifier<int> {
   ProvideWaistHeight() : super();
 
