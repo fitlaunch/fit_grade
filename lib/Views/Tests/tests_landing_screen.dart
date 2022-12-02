@@ -1,4 +1,5 @@
 import 'package:fit_grade/Examples/Task_Progress/task_screen.dart';
+import 'package:fit_grade/Examples/User/user_screen.dart';
 import 'package:fit_grade/Views/Authenticate/login.dart';
 import 'package:fit_grade/Views/LeaderBoards/leader_boards_screen.dart';
 import 'package:fit_grade/Views/Ratios/BMI/bmi_screen.dart';
@@ -114,6 +115,13 @@ class TestsLandingScreen extends StatelessWidget {
                             builder: (context) => const CounterScreen()));
                   },
                   child: const Text('Count 1'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => UserScreen()));
+                  },
+                  child: const Text('Name-Age'),
                 ),
               ],
             )
