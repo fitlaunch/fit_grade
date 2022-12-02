@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../Widgets/app_bar_primary.dart';
-import '../ratio_providers.dart';
-
-//final waistHipRatio = StateNotifierProvider<ProvideWaistHipRatio, String>((ref) => ProvideWaistHipRatio());
 
 class WaistHipScreen extends ConsumerWidget {
   const WaistHipScreen({Key? key}) : super(key: key);

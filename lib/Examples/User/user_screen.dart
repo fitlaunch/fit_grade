@@ -4,18 +4,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../Widgets/app_bar_primary.dart';
 
-///working on getting the rank to display the result of calcRank() ???
-
-final userProvider =
-    StateNotifierProvider<UserNotifier, User>((ref) => UserNotifier(
-          const User(name: '', age: 0, weight: 0, rank: 0),
-        ));
-
 class UserScreen extends ConsumerWidget {
   const UserScreen({
     Key? key,
   }) : super(key: key);
 
+  ///Methods
   void onSubmit(ref, value) {
     ref.read(userProvider.notifier).updateName(value);
   }
@@ -25,12 +19,17 @@ class UserScreen extends ConsumerWidget {
   }
 
   void onSubmitWeight(ref, value) {
-    ref.read(userProvider.notifier).calcRank(double.parse(value));
+    ref.read(userProvider.notifier).updateWeight(double.parse(value));
   }
+
+  String onSubmitData(ref, weight, age) =>
+      ref.read(rankProvider.notifier).calcRank(weight, age);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(userProvider);
+    final rank =
+        ref.watch(rankProvider.notifier).calcRank(user.weight, user.age);
     return Scaffold(
       appBar: AppBarPrimary(title: user.name),
       body: Padding(
@@ -68,13 +67,16 @@ class UserScreen extends ConsumerWidget {
                     children: [
                       const Text('Rank:  '),
                       Text(
-                        user.rank.toString(),
+                        rank.toString(),
                       ),
                     ],
                   ),
                 ],
               ),
             ),
+            // TextButton(
+            //     onPressed: () => onSubmitData(ref, user.weight, user.age),
+            //     child: const Text('Check Rank'))
           ],
         ),
       ),
