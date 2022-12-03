@@ -22,8 +22,13 @@ class UserScreen extends ConsumerWidget {
     ref.read(userProvider.notifier).updateWeight(double.parse(value));
   }
 
-  String onSubmitData(ref, weight, age) =>
-      ref.read(rankProvider.notifier).calcRank(weight, age);
+  // not used as not tied to button... and not working
+  // String onSubmitData(ref, weight, age) {
+  //   final user = ref.watch(userProvider);
+  //   final rank =
+  //       ref.read(rankProvider.notifier).calcRank(user.weight, user.age);
+  //   return rank;
+  // }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -1,3 +1,4 @@
+import 'package:fit_grade/Views/Ratios/BMI/bmi_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -113,6 +114,16 @@ class BMIScreen extends ConsumerWidget {
                 ),
                 const SizedBox(height: 20),
                 theText(ref),
+                const SizedBox(height: 20),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const BMIPage()));
+                  },
+                  child: const Text('Other RP BMI'),
+                ),
               ],
             ),
           ),

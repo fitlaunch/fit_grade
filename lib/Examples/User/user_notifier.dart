@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-///Providers - leave here or place at top ui file?  Either works global prroviders)
-final userProvider =
-    StateNotifierProvider<UserNotifier, User>((ref) => UserNotifier(
-          const User(name: '', age: 0, weight: 0),
-        ));
-final rankProvider = StateNotifierProvider((ref) => RankNotifier());
-
 @immutable
 class User {
   final String name;
@@ -95,18 +88,6 @@ class UserNotifier extends StateNotifier<User> {
   void updateWeight(double w) {
     state = state.copyWith(weight: w);
   }
-
-  ///these don't work???
-  // void calcRank(weight, age) {
-  //    state = state.copyWith(rank: (.62 * weight) - 22 + age);
-  //  }
-
-  // void calcRank(weight, age) {
-  //   double score;
-  //   score = (.62 * weight) + 22 - age;
-  //   return state.copyWith(rank: score);
-  //   //score.toStringAsFixed(2);
-  // }
 }
 
 class RankNotifier extends StateNotifier<String?> {
@@ -118,3 +99,10 @@ class RankNotifier extends StateNotifier<String?> {
     return rank.toString();
   }
 }
+
+///Providers - leave here or place at top ui file?  Either works global prroviders)
+final userProvider =
+    StateNotifierProvider<UserNotifier, User>((ref) => UserNotifier(
+          const User(name: '', age: 0, weight: 0),
+        ));
+final rankProvider = StateNotifierProvider((ref) => RankNotifier());
