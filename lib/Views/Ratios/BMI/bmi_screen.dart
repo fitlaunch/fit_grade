@@ -1,3 +1,4 @@
+import 'package:fit_grade/Utils/Global_Providers/Gender/gender_widget.dart';
 import 'package:fit_grade/Views/Ratios/BMI/bmi_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,7 +11,7 @@ class BMIScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _weight = ref.watch(weightProvider.notifier);
+    final weight = ref.watch(weightProvider.notifier);
     final _bmiValue = ref.watch(bmiValueProvider.notifier);
     final _height = ref.watch(heightProvider.notifier);
 
@@ -67,7 +68,7 @@ class BMIScreen extends ConsumerWidget {
                           textAlignVertical: TextAlignVertical.center,
                           textAlign: TextAlign.center,
                           onChanged: (value) {
-                            _weight.state = value;
+                            weight.state = value;
                             //print(value);
                           },
                         ),
@@ -108,7 +109,7 @@ class BMIScreen extends ConsumerWidget {
                         {
                           _bmiValue.state = ProvideBMI().getBmiValue(
                               int.parse(_height.state),
-                              int.parse(_weight.state));
+                              int.parse(weight.state));
                         }
                       }),
                 ),
@@ -123,6 +124,17 @@ class BMIScreen extends ConsumerWidget {
                             builder: (context) => const BMIPage()));
                   },
                   child: const Text('Other RP BMI'),
+                ),
+                const Text(
+                    'gender widget still not yet working with riverpod - FYI, errors if you advance.'),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => GenderWidget()));
+                  },
+                  child: const Text('Gender Select'),
                 ),
               ],
             ),

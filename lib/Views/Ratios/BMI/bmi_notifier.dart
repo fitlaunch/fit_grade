@@ -1,9 +1,8 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-@immutable
+//@immutable
 class BMI {
   final double height;
   final double weight;
@@ -30,8 +29,9 @@ class BmiInputNotifier extends StateNotifier<BMI> {
   }
 }
 
-class BMINotifier extends StateNotifier<String?> {
-  BMINotifier() : super('0.0');
+class BMINotifier extends StateNotifier<BMI> {
+  BMINotifier(super.state);
+  // : super('');
 
   String calcBMI(double weight, double height) {
     double bMI;
@@ -44,4 +44,8 @@ final bmiInputProvider = StateNotifierProvider<BmiInputNotifier, BMI>(
   (ref) => BmiInputNotifier(const BMI(weight: 0.00, height: 0.00)),
 );
 
-final bmiProvider = StateNotifierProvider((ref) => BMINotifier());
+final bmiProvider = StateNotifierProvider<BMINotifier, BMI>(
+  (ref) => BMINotifier(
+    const BMI(weight: 0.00, height: 0.00),
+  ), //shouldn't this be my starting state?
+);

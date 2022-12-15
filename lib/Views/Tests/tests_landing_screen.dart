@@ -123,6 +123,15 @@ class TestsLandingScreen extends StatelessWidget {
                   },
                   child: const Text('Name-Age'),
                 ),
+                TextButton(
+                  onPressed: () {
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => RockPaperScissor()));
+                  },
+                  child: const Text('RPS'),
+                ),
               ],
             )
           ],

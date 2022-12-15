@@ -3,6 +3,9 @@ import 'package:fit_grade/Widgets/app_bar_primary.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/// why bmi result defaulting to NaN?
+/// this one appears cleaner than the other bmi
+
 class BMIPage extends ConsumerWidget {
   const BMIPage({
     Key? key,

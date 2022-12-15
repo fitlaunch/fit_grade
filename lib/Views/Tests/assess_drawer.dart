@@ -1,4 +1,10 @@
+import 'package:fit_grade/Views/Cardio_Resp/cardio_screen.dart';
+import 'package:fit_grade/Views/Flexibility/flexibility_screen.dart';
+import 'package:fit_grade/Views/Genetic/genetic_assess_screen.dart';
 import 'package:fit_grade/Views/Ratios/anthro_measures_screen.dart';
+import 'package:fit_grade/Views/Str_Endur/str_endur_screen.dart';
+import 'package:fit_grade/Views/Str_Pwr/str_power.dart';
+import 'package:fit_grade/Views/Strength/strength_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'Batteries/batteries_screen.dart';
@@ -16,7 +22,7 @@ class AssessDrawer extends StatelessWidget {
       child: Drawer(
         //backgroundColor: Colors.amber,
         elevation: 25,
-        shadowColor: Colors.black54,
+        //shadowColor: Colors.black54,
         child: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -29,13 +35,14 @@ class AssessDrawer extends StatelessWidget {
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
-                padding: const EdgeInsets.symmetric(vertical: 50),
+                padding: const EdgeInsets.symmetric(vertical: 30),
                 curve: Curves.bounceInOut,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.blue,
                 ),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
                     Text(
                       'What\'s Your Grade?',
@@ -46,9 +53,10 @@ class AssessDrawer extends StatelessWidget {
                         fontSize: 30,
                       ),
                     ),
-                    SizedBox(height: 5),
+                    SizedBox(height: 12),
                     Text(
-                      'Select an Assessment',
+                      '''Select an Assessment,                      
+Full Battery or Challenge''',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
@@ -58,6 +66,7 @@ class AssessDrawer extends StatelessWidget {
                 ),
               ),
               ListTile(
+                leading: const Icon(Icons.earbuds_battery_rounded),
                 title: const Text('Assessment Batteries'),
                 onTap: () {
                   Navigator.push(
@@ -68,6 +77,7 @@ class AssessDrawer extends StatelessWidget {
                 },
               ),
               ListTile(
+                leading: const Icon(Icons.compass_calibration_rounded),
                 title: const Text('Challenges'),
                 onTap: () {
                   Navigator.push(
@@ -78,6 +88,18 @@ class AssessDrawer extends StatelessWidget {
                 },
               ),
               ListTile(
+                leading: const Icon(Icons.health_and_safety_rounded),
+                title: const Text('Genetic Wellness Assess'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const GeneticAssessScreen()),
+                  );
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.blur_circular_rounded),
                 title: const Text('Girth, Ratios, & BF%'),
                 onTap: () {
                   Navigator.push(
@@ -88,57 +110,58 @@ class AssessDrawer extends StatelessWidget {
                 },
               ),
               ListTile(
-                title: const Text('Determine VO2max'),
+                leading: const Icon(Icons.directions_run_rounded),
+                title: const Text('Cardio-Respiratory (VO2max)'),
                 onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CardioScreen()),
+                  );
                 },
               ),
               ListTile(
-                title: const Text('Muscle-Power'),
+                leading: const Icon(Icons.power_input_outlined),
+                title: const Text('Muscular-Power'),
                 onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const StrPowerScreen()),
+                  );
                 },
               ),
               ListTile(
-                title: const Text('Muscle-Strength'),
+                leading: const Icon(Icons.fitness_center_rounded),
+                title: const Text('Muscular-Strength'),
                 onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const StrengthScreen()),
+                  );
                 },
               ),
               ListTile(
-                title: const Text('Muscle-Endurance'),
+                leading: const Icon(Icons.join_inner_rounded),
+                title: const Text('Muscular-Endurance'),
                 onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const StrEndurScreen()),
+                  );
                 },
               ),
               ListTile(
-                title: const Text('Power Rating'),
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
+                leading: const Icon(Icons.area_chart_rounded),
                 title: const Text('Flexibility'),
                 onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const FlexibilityScreen()),
+                  );
                 },
               ),
             ],

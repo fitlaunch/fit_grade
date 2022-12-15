@@ -95,17 +95,14 @@ class WaistHeightScreen extends ConsumerWidget {
                 Container(
                   margin: const EdgeInsets.only(bottom: 20.0),
                   child: TextButton(
-                      child: const Text('CALCULATE'),
-                      onPressed: () => ref
-                          .read(waistHeightRatioProvider.notifier)
-                          .getWaistHeightValue(
-                            waist,
-                            height,
-                          )
-                      //ref.read(waistHeightRatioProvider.notifier)
-                      //ProvideWaistHeight()
-                      //.getWaistHeightValue(waist, height),
-                      ),
+                    child: const Text('CALCULATE'),
+                    onPressed: () => ref
+                        .read(waistHeightRatioProvider.notifier)
+                        .getWaistHeightValue(waist, height),
+                    //ref.read(waistHeightRatioProvider.notifier)
+                    //ProvideWaistHeight()
+                    //.getWaistHeightValue(waist, height),
+                  ),
                 ),
                 const SizedBox(height: 25),
                 Text(waistHeightRatio.toString())
