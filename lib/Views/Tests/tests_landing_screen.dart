@@ -8,6 +8,7 @@ import 'package:fit_grade/Widgets/app_bar_primary.dart';
 import 'package:flutter/material.dart';
 
 import '../../Examples/Counter/counter_screen.dart';
+import '../../Examples/List/primary_screen.dart';
 import '../Ratios/BMR/bmr_screen.dart';
 import '../Ratios/Waist_Height/waist_height_screen.dart';
 import 'assess_drawer.dart';
@@ -131,6 +132,19 @@ class TestsLandingScreen extends StatelessWidget {
                     //         builder: (context) => RockPaperScissor()));
                   },
                   child: const Text('RPS'),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const PrimaryScreen()));
+                  },
+                  child: const Text('Prime List'),
                 ),
               ],
             )
